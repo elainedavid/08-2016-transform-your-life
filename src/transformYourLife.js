@@ -136,8 +136,26 @@ console.dir(contentsCollector(person, "values"));
 console.dir(contentsCollector(person));
 
 // 13. makeArray
+var makeArray = function(number) {
+	var result = Array(number);
+	loop(result, function(value, index) {
+		result[index] = index;
+	});
+	return result;
+};
+console.log("Make Array of Numbers");
+console.dir(makeArray(10));
 
 // 14. makeRow
+var makeRow = function(inputArray) {
+	return transform(inputArray, function() {
+		return {
+			state: null
+		};
+	});
+};
+console.log("Make Row of State");
+console.dir(makeRow(makeArray(10)));
 
 // 15. makeTicTacToeBoard
 

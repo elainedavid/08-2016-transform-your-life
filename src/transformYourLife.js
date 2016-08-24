@@ -62,16 +62,78 @@ console.dir(multByThreeNumbers);
 console.dir(multByThree(multByThreeNumbers));
 
 // 6. upperCase
+// same as #3, renamed the function per requirement (since #3 solution was already wrapping transform() to begin with)
+var upperCase = function(sentence) {
+	return transform(sentence, function(letter) {
+			return letter.toUpperCase();
+	}).join("");
+};
+console.log("Upper Case");
+console.log(bestSentenceToUpperCase(bestSentence));
 
 // 7. contentsCollection
+// same as #4, renamed the function per requirement (since #4 solution was already wrapping transform() to begin with)
+var contentsCollection = function(personObject) {
+	return transform(personObject, function(value, key) {
+		return [key, value];
+	});
+}
+console.log("Contents Collection Array");
+var collectedContents = contentsCollection(person);
+console.dir(collectedContents);
 
 // 8. multByWhatever
+var multByWhatever = function(collection, inputNum) {
+	return transform(numbers, function(number) {
+		return number * inputNum;
+	});
+};
+console.log("Multiply By Whatever");
+console.dir(multByWhatever(numbers, 5));
+console.dir(multByWhatever(numbers, 10));
 
 // 9. divideByWhatever
+var divideByWhatever = function(collection, inputNum) {
+	return transform(numbers, function(number) {
+		return number / inputNum;
+	});
+};
+console.log("Divide By Whatever");
+console.dir(divideByWhatever(numbers, 1));
+console.dir(divideByWhatever(numbers, 10));
 
 // 10. switchCase
+// "case" is a reserved keyword in JS, changing the parameter name to "toCase" instead
+var switchCase = function(sentence, toCase) {
+	return transform(sentence, function(letter) {
+		if (toCase === "upper")
+			return letter.toUpperCase();
+		else if (toCase === "lower")
+			return letter.toLowerCase();
+		else //invalid case parameter, return the letter "as-is"
+			return letter;
+	}).join("");
+};
+console.log("Switch Case");
+console.log(switchCase(bestSentence, "lower"));
+console.log(switchCase(bestSentence, "upper"));
+console.log(switchCase(bestSentence, "something"));
 
 // 11. contentsCollector
+var contentsCollector = function(object, specifier) {
+	return transform(object, function(value, key) {
+		if (specifier === "keys")
+			return key;
+		else if (specifier === "values")
+			return value;
+		else 
+			return [key, value];
+	});
+};
+console.log("Contents Collector");
+console.dir(contentsCollector(person, "keys"));
+console.dir(contentsCollector(person, "values"));
+console.dir(contentsCollector(person));
 
 // 13. makeArray
 

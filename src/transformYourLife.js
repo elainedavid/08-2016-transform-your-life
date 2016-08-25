@@ -158,5 +158,16 @@ console.log("Make Row of State");
 console.dir(makeRow(makeArray(10)));
 
 // 15. makeTicTacToeBoard
+var makeTicTacToeBoard = function(number) {
+	var matrix = makeArray(number);
+	loop(matrix, function(value, index) {
+		matrix[index] = makeRow(makeArray(number));
+	});
+	return matrix;
+};
+
+console.log("Make Tic Tac Toe Board");
+var ticTacToeBoard = makeTicTacToeBoard(3);
+console.dir(ticTacToeBoard);
 
 // 16. setXorO 

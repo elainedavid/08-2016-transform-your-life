@@ -171,3 +171,44 @@ var ticTacToeBoard = makeTicTacToeBoard(3);
 console.dir(ticTacToeBoard);
 
 // 16. setXorO 
+console.log("Tic Tac Toe Challenge");
+var gameCreator = function(ticTacToeBoard) {
+	return {
+		gameBoard: ticTacToeBoard,
+		count: 0
+	};
+};
+
+var gameOne = gameCreator(makeTicTacToeBoard(3));
+console.log(gameOne);
+
+var setXorO = function(game, coordinates) {
+	var xCoord = coordinates[0];
+	var yCoord = coordinates[1];
+	loop(game.gameBoard, function(value, index) {
+		if (index === xCoord) {
+			//console.log("current X-coordinate value: " + value);
+			loop(value, function(innerValue, innerIndex) {
+				if (innerIndex === yCoord) {
+					//console.log("current Y-coordinate value: " + innerValue);
+					var isEven = game.count % 2 === 0;
+					//console.log("current state value: " + innerValue.state);
+					if (innerValue.state === null) {
+						if (isEven) {
+							innerValue.state = "x";
+						} else {
+							innerValue.state = "o";
+						}
+						game.count++;
+					} else {
+						alert("this square has already been chosen");
+					}
+				}
+			});
+		}
+	});
+};
+
+console.log(setXorO(gameOne, [0, 0]));
+console.log(setXorO(gameOne, [0, 2]));
+console.log(setXorO(gameOne, [0, 0]));	// should popup alert
